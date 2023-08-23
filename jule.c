@@ -111,12 +111,14 @@ int yed_plugin_boot(yed_plugin *self) {
         APUSH("&code-keyword");
             KWD("fn");
             KWD("set");
+            KWD("local");
         APOP();
 
         APUSH("&code-control-flow");
             KWD("if");
             KWD("while");
             KWD("repeat");
+            KWD("foreach");
         APOP();
     ENDSYN();
 
