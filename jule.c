@@ -109,6 +109,7 @@ int yed_plugin_boot(yed_plugin *self) {
         APOP();
 
         APUSH("&code-keyword");
+            REGEX("eval-file"WB);
             KWD("fn");
             KWD("set");
             KWD("local");
