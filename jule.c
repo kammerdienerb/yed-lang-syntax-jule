@@ -100,14 +100,6 @@ int yed_plugin_boot(yed_plugin *self) {
             REGEXSUB("(^|[^[:alnum:]_])(0[xX][0-9a-fA-F]+)"WB, 2);
         APOP();
 
-        APUSH("&code-preprocessor");
-            REGEXSUB("(^|[[:space:]])(@[^[:space:]]+)", 2);
-        APOP();
-
-        APUSH("&code-fn-call");
-            REGEXSUB("^[[:space:]]*([^[:space:]]+)", 1);
-        APOP();
-
         APUSH("&code-keyword");
             REGEX("eval-file"WB);
             KWD("fn");
@@ -120,6 +112,14 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("while");
             KWD("repeat");
             KWD("foreach");
+        APOP();
+
+        APUSH("&code-preprocessor");
+            REGEXSUB("(^|[[:space:]])(@[^[:space:]]+)", 2);
+        APOP();
+
+        APUSH("&code-fn-call");
+            REGEXSUB("^[[:space:]]*([^[:space:]]+)", 1);
         APOP();
     ENDSYN();
 
