@@ -105,6 +105,8 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("fn");
             KWD("set");
             KWD("local");
+            KWD("eset");
+            KWD("elocal");
         APOP();
 
         APUSH("&code-control-flow");
