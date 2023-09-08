@@ -115,14 +115,18 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("while");
             KWD("repeat");
             KWD("foreach");
+            KWD("do");
+            KWD("then");
+            KWD("else");
         APOP();
 
         APUSH("&code-preprocessor");
-            REGEXSUB("(^|[[:space:]])(@[^[:space:]]+)", 2);
+            REGEXSUB("(^|[[:space:]])(@[^[:space:]()#]+)", 2);
         APOP();
 
         APUSH("&code-fn-call");
-            REGEXSUB("^[[:space:]]*([^[:space:]]+)", 1);
+            REGEXSUB("^[[:space:]]*([^[:space:]()]+)", 1);
+            REGEXSUB("\\([[:space:]]*([^()[:space:]#]+)", 1);
         APOP();
     ENDSYN();
 
