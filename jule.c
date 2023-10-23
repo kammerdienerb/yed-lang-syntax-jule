@@ -112,6 +112,7 @@ int yed_plugin_boot(yed_plugin *self) {
 
         APUSH("&code-keyword");
             REGEX("use-package"WB);
+            REGEX("add-package-directory"WB);
             REGEX("eval-file"WB);
             KWD("fn");
             KWD("localfn");
@@ -124,12 +125,11 @@ int yed_plugin_boot(yed_plugin *self) {
 
         APUSH("&code-control-flow");
             KWD("if");
+            KWD("elif");
+            KWD("else");
             KWD("while");
-            KWD("repeat");
             KWD("foreach");
             KWD("do");
-            KWD("then");
-            KWD("else");
         APOP();
 
         APUSH("&code-preprocessor");
