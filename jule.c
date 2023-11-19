@@ -133,7 +133,7 @@ int yed_plugin_boot(yed_plugin *self) {
         APOP();
 
         APUSH("&code-preprocessor");
-            REGEXSUB("(^|[[:space:]])(@[^[:space:]()#]+)", 2);
+            REGEXSUB("(^|[([:space:]])(@[^[:space:]()#]+)", 2);
         APOP();
 
         APUSH("&code-fn-call");
