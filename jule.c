@@ -117,8 +117,10 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("fn");
             KWD("localfn");
             KWD("set");
+            KWD("ref");
             KWD("local");
             KWD("eset");
+            KWD("eref");
             KWD("elocal");
             KWD("lambda");
         APOP();
@@ -134,6 +136,10 @@ int yed_plugin_boot(yed_plugin *self) {
 
         APUSH("&code-preprocessor");
             REGEXSUB("(^|[([:space:]])(@[^[:space:]()#]+)", 2);
+        APOP();
+
+        APUSH("&code-variable");
+            REGEXSUB("(^|[([:space:]])(&[^[:space:]()#]+)", 2);
         APOP();
 
         APUSH("&code-fn-call");
