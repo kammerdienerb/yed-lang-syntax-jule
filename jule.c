@@ -104,8 +104,11 @@ int yed_plugin_boot(yed_plugin *self) {
             RANGE("\""); ONELINE(); SKIP("\\\\\""); ENDRANGE("\"");
         APOP();
 
-        APUSH("&code-number");
+        APUSH("&code-constant");
             KWD("nil");
+        APOP();
+
+        APUSH("&code-number");
             REGEXSUB("(^|[^[:alnum:]_])(-?([[:digit:]]+\\.[[:digit:]]*)|(([[:digit:]]*\\.[[:digit:]]+)))"WB, 2);
             REGEXSUB("(^|[^[:alnum:]_])(-?[[:digit:]]+)"WB, 2);
             REGEXSUB("(^|[^[:alnum:]_])(0[xX][0-9a-fA-F]+)"WB, 2);
